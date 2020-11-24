@@ -1,0 +1,35 @@
+version: "3"
+services:
+  web:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./project:/var/www/html/project
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./log/nginx:/var/log/nginx
+    networks:
+      - web-server
+  php:
+    image: ordinary9843/php:7.2-fpm
+    ports:
+      - "9000:9000"
+    container_name: php-72
+    volumes:
+      - ./project:/var/www/html/project
+    networks:
+      - web-server
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-57
+    ports:
+      - "3306:3306"
+    environment:
+      - TZ=Asia/Taipei
+      - MYSQL_ROOT_PASSWORD=123456
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    networks:
+      - web-server
+networks:
+  web-server:
