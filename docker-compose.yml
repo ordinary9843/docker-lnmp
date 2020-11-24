@@ -12,10 +12,10 @@ services:
     networks:
       - web-server
   php:
-    image: ordinary9843/php:7.2-fpm
+    build: ./php/
+    container_name: php-72
     ports:
       - "9000:9000"
-    container_name: php-72
     volumes:
       - ./project:/var/www/html/project
     networks:

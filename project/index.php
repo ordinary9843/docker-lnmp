@@ -1,6 +1,8 @@
 <?php
 try {
-    $dbname = 'test';
+    echo ini_get('memory_limit') . '<br>';
+
+    $dbname = 'performance_schema';
     $username = 'root';
     $password = '123456';
 
@@ -8,12 +10,13 @@ try {
 
     echo '已連接資料庫<br>';
 
-    $stmt = $conn->prepare('SELECT * FROM name');
+    $stmt = $conn->prepare('SELECT * FROM accounts');
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll();
 
-    foreach ($stmt->fetchAll() as $key => $value) {
-        echo $value["name"] . '<br>';
+    foreach ($result as $key => $value) {
+        echo $value['USER'] . '<br>';
     }
 } catch (PDOException $e) {
     echo $e->getMessage();
