@@ -3,15 +3,14 @@ RUN apt-get update \
   && apt-get install -y \
     cron \
     openssl \
-    #libfreetype6-dev \
-    #libicu-dev \
-    #libjpeg62-turbo-dev \
-    #libpng-dev \
+    libfreetype6-dev \
+    libicu-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
     git
 RUN docker-php-ext-install \
-    #gd \
-    #mbstring \
+    gd \
+    mbstring \
     pdo \
     pdo_mysql
-#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-#RUN composer install
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
