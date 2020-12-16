@@ -30,7 +30,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mysql/data:/var/lib/mysql
     environment:
       - TZ=Asia/Taipei
       - MYSQL_ROOT_PASSWORD=123456
@@ -44,7 +44,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis/data:/usr/local/etc/redis
     command: redis-server /usr/local/etc/redis/redis.conf
 networks:
   web-server:
