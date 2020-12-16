@@ -1,16 +1,17 @@
 FROM php:7.2-fpm
 ENV TZ=Asia/Taipei
 RUN apt-get update \
-  && apt-get install -y \
-    cron \
-    openssl \
-    libfreetype6-dev \
-    libicu-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    redis \
-    git
-RUN pecl install redis
+    && apt-get install -y \
+        cron \
+        openssl \
+        libfreetype6-dev \
+        libicu-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+        git
+RUN pecl install redis \
+    && docker-php-ext-enable redis \
+    && rm -rf /tmp/pear
 RUN docker-php-ext-install \
     gd \
     mbstring \
