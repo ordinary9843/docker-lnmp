@@ -30,21 +30,21 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql/data:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
     environment:
       - TZ=Asia/Taipei
       - MYSQL_ROOT_PASSWORD=123456
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     networks:
       - web-server
-  redis:
-    image: redis:latest
-    container_name: redis
-    restart: always
-    ports:
-      - "6379:6379"
-    volumes:
-      - ./redis/data:/usr/local/etc/redis
-    command: redis-server /usr/local/etc/redis/redis.conf
+  #redis:
+  #  image: redis:latest
+  #  container_name: redis
+  #  restart: always
+  #  ports:
+  #    - "6379:6379"
+  #  volumes:
+  #    - ./redis/data:/usr/local/etc/redis
+  #  command: redis-server /usr/local/etc/redis/redis.conf
 networks:
   web-server:
