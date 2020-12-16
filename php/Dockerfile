@@ -10,11 +10,10 @@ RUN apt-get update \
     libpng-dev \
     redis \
     git
-#RUN pecl install redis
+RUN pecl install redis
 RUN docker-php-ext-install \
     gd \
     mbstring \
     pdo \
-    pdo_mysql \
-    redis
+    pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
