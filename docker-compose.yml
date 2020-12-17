@@ -14,6 +14,7 @@ services:
       - web-server
   php:
     build: ./php/
+    image: php:custom
     container_name: php-72
     restart: "always"
     ports:
