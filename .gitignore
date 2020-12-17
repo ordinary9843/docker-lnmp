@@ -3,3 +3,6 @@ log/
 project/
 mysql/
 redis/data/
+
+!project/index.php
+!project/phpinfo.php
