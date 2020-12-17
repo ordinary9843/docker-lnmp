@@ -16,5 +16,6 @@ RUN docker-php-ext-install \
   gd \
   mbstring \
   pdo \
-  pdo_mysql
+  pdo_mysql \
+  opcache
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.9.0
