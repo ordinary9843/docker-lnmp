@@ -2,4 +2,4 @@
 log/
 project/
 mysql/
-redis/
+redis/data/
